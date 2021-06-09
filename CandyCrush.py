@@ -42,7 +42,7 @@ def CandyCrush(board):
                     board[swapAbleIndex][column]=board[row][column]
                     swapAbleIndex-=1
             for row in range(swapAbleIndex,-1,-1):
-                board[row][column]=0
+                    board[row][column]=0
     if crush==True:
         print(board)
     else:

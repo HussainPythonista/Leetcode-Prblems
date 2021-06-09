@@ -22,7 +22,7 @@ def maximumSwap(listValue):
     for i in range(len(listValue)-1,-1,-1):
         if listValue[i]>maxValue:
             maxValue=listValue[i]
-            maximumI=i
+            maximumI=listValue[i]
         tableForDp[i]=maximumI
     for i in range(len(listValue)):
         currentMax=listValue[tableForDp[i]]
