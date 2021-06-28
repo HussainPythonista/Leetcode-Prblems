@@ -1,10 +1,13 @@
+
+
+
 nums = [7,8,9,10,11,12,13,1,4,5,6]
-nums=[3,1,2]
+#nums=[3,1,2]
 #nums=[6,7,8,0,1,2,3,4,5,6]
 
 #This one is O(2Logn) Approach is Little slower than O(logn) Approach
 
-search=1
+search=7
 def binarySearch(nums,pivot,start,end,search):
     if pivot==0:
         start=0
@@ -59,6 +62,30 @@ if len(nums)>2:
     search)
     print(result)
 else:
+
     piviot=0
     result= binarySearch(nums,piviot,start,end,search)
     print(result)
+
+
+#Approach 2
+def findElementInRotatedArray(nums,search):
+    start=0
+    end=len(nums)-1
+    while start<=end:
+        mid=(start+end)//2
+        if nums[mid]==search:
+            return mid
+        else:
+            if nums[start]<nums[mid]:
+                if nums[start]>search and search<nums[mid]:
+                    end=mid-1
+                else:
+                    start=mid+1
+
+            else:
+                if nums[end]<search and search<nums[mid]:
+                    start=mid+1
+                else:
+                    end=mid-1
+print(findElementInRotatedArray(nums,search))
