@@ -8,6 +8,8 @@ def isSafe(row, col, matrix, N):
             return False
         row-=1
         col-=1
+
+    
     col = dummyCol
     row = dummyROw
     while col>=0:
@@ -24,8 +26,6 @@ def isSafe(row, col, matrix, N):
         row+=1
         col-=1
     return True
-print(answer)
-visited=False
 def nNumberOfQueens(matrix, col, N):
     global answer,visited
    
@@ -38,7 +38,7 @@ def nNumberOfQueens(matrix, col, N):
             if nNumberOfQueens(matrix, col+1, N)==True:
                 return True
             matrix[i][col] = 0
-    return answer
+    
 matrix = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -48,6 +48,6 @@ matrix = [
 N = len(matrix)
 
 col = 0
-if nNumberOfQueens(matrix, col, N)==True:
+nNumberOfQueens(matrix, col, N)
+print(matrix)
     
-    print(matrix)

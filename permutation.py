@@ -1,4 +1,4 @@
-nums=[1,2,3]
+nums=["A","B","C"]
 val = nums
 answerIwant = []
 bucket=[]
@@ -14,13 +14,13 @@ def permutation(nums):
         
         #    print(sub)
         permutation(nums)
-        sub.append(bucket)
+        #sub.append(bucket)
         nums.append(bucket.pop())
     return answerIwant
 # [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 sub = []
 bucket = []
-
+print(answerIwant)
 val = (permutation(nums))
 print(val)
 

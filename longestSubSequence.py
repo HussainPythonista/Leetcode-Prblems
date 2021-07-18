@@ -48,7 +48,6 @@ def longestSubSequence(nums):
 
     print(maxValue)
 
-longestSubSequence(nums)
 def backTrackingApproach(nums):
     pass
 def twoSum(nums,target):
@@ -63,3 +62,29 @@ def twoSum(nums,target):
 nums = [3,2,4]
 target = 6
 #twoSum(nums,target)
+
+def lis(a):
+    n=len(a)
+    # Creating the sorted list
+    b=sorted(list(set(a)))
+    m=len(b)
+     
+     
+    # Creating dp table for storing the answers of sub problems
+    dp=[[-1 for i in range(m+1)] for j in range(n+1)]
+     
+    # Finding Longest common Subsequence of the two arrays
+    for i in range(n+1):
+             
+        for j in range(m+1):
+            if i==0 or j==0:
+                dp[i][j]=0
+            elif a[i-1]==b[j-1]:
+                dp[i][j]=1+dp[i-1][j-1]
+            else:
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1])
+    return dp
+a=nums = nums = [0, 1, 0, 3, 2, 3]
+
+
+print(lis(a))

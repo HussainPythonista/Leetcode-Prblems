@@ -12,7 +12,7 @@ def CandyCrush(board):
     #For Crushing Row
     crush=True
     for row  in range(len(board)):
-        for column in range(len(board[0])-2):
+        for column in range(len(board[0])-2):#-2 because,if all the three are same thenonly it will crush
             nums1=abs(board[row][column])
             nums2=abs(board[row][column+1])
             nums3=abs(board[row][column+2])
