@@ -1,4 +1,4 @@
-nums=["A","B","C"]
+nums=[0,1,3]
 val = nums
 answerIwant = []
 bucket=[]
@@ -10,9 +10,6 @@ def permutation(nums):
     for i in range(len(nums)):
         val=nums.pop(0)
         bucket.append(val)
-        #if len(bucket)-1==numberOfValues and bucket not in sub:
-        
-        #    print(sub)
         permutation(nums)
         #sub.append(bucket)
         nums.append(bucket.pop())

@@ -7,7 +7,7 @@ def combine(n,k):
                 answer.append(path[:])
                 return
             for i in range(index,len(nums)):
-                print(path)
+                #print(path)
                 path.append(nums[i])
                 helper(k,nums,i+1,path,answer)
                 path.pop()
