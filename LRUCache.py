@@ -28,19 +28,20 @@ class DoublyLinkedList(object):
         return self.head
     
     def deleteNode(self,node):
-        if self.head.nextRef!=None:
-            next=node.nextRef
-            prev=node.prevRef
-            
-            if node==self.last :
-                tempPrev=node.prevRef
-                self.last=tempPrev
-                node.prevRef.nextRef=None
-    
-            else:
-                node.nextRef.prevRef=prev
-                node.prevRef.nextRef=next
-        
+        #print(node.nextRef)
+        next=node.nextRef
+        prev=node.prevRef
+        if node==self.head:
+            nextNode=node.nextRef
+            self.head=nextNode
+        elif node==self.last:
+            tempPrev=node.prevRef
+            self.last=tempPrev
+            node.prevRef.nextRef=None
+
+        else:
+            node.nextRef.prevRef=prev
+            node.prevRef.nextRef=next
             
             
     def printVal(self):
@@ -69,12 +70,16 @@ class DoublyLinkedList(object):
         print(backword)
     
 
-capacity=1
+capacity=2
 bucket={}
 dd=DoublyLinkedList()
 #[null,null,1,null,-1,2]
 def get(key):
     result=-1
+    if dd.head==None:
+        print(result)
+        return result
+    
     if dd.head.key==key:
         result=dd.head.val
     else:
@@ -111,17 +116,21 @@ def LRUCache(capacity,val):
     #else:
     #dd.printVal()
 #[[2], , [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+["LRUCache","get","put","get","put","put","get","get"]
+[[2],[2],[2,6],[1],[1,5],[1,2],[1],[2]]
 
-["LRUCache","put","get","put","get","get"]
-[[1],[2,1],[2],[3,2],[2],[3]]
+
+#["LRUCache","put","get","put","get","get"]
+#[[1],[2,1],[2],[3,2],[2],[3]]
 #[null,null,1,null,-1,2]
-val=[2, 1]
-LRUCache(capacity,val)
+
 get(2)
-val=[3, 2]
+val=[2,6]
 LRUCache(capacity,val)
-print(get(2))
-print(get(3))
+get(1)
+val=[1,5]
+LRUCache(capacity,val)
+val=[1,2]
+LRUCache(capacity,val)
 dd.printVal()
-dd.printBackWord()
 print(bucket)

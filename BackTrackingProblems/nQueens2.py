@@ -1,59 +1,53 @@
-import copy
-class Solution(object):
-    def __init__(self):
-        self.solutions = []
+answer = []
+def isSafe(row, col, matrix, N):
 
-    def solveNQueens(self, n):
-        """
-        :type n: int
-        :rtype: List[List[str]]
-        """
-        grid = [['.' for _ in range(n)] for _ in range(n)]
-        solved = self.helper(n, 0, grid)
-        print (len(self.solutions))
-        if solved:
-            return ["".join(item) for item in grid]
-        else:
-            return None
+    dummyROw = row
+    dummyCol = col
+    while col>=0 and row>=0:
+        if matrix[row][col] == 1:
+            return False
+        row-=1
+        col-=1
 
-    def helper(self, n, row, grid):
-        if n == row:
-            print ("wooo")
-            self.solutions.append(copy.deepcopy(grid))
-            return
-        for col in range(n):
-            if self.is_safe(row, col, grid):
-                grid[row][col] = 'Q'
-                self.helper(n, row + 1, grid)
-                grid[row][col] = '.'
-        print(self.solution)
-    def is_safe(self, row, col, board):
-        for i in range(len(board)):
-            if board[row][i] == 'Q' or board[i][col] == 'Q':
-                return False
-        i = 0
-        while row - i >= 0 and col - i >= 0:
-            if board[row - i][col - i] == 'Q':
-                return False
-            i += 1
-        i = 0
-        while row + i < len(board) and col + i < len(board):
-            if board[row + i][col - i] == 'Q':
-                return False
-            i += 1
-        i = 1
-        while row + i < len(board) and col - i >= 0:
-            if board[row + i][col - i] == 'Q':
-                return False
-            i += 1
-        i = 1
-        while row - i >= 0 and col + i < len(board):
-            if board[row - i][col + i] == 'Q':
-                return False
-            i += 1
-        return True
     
+    col = dummyCol
+    row = dummyROw
+    while col>=0:
+        if matrix[row][col] == 1:
+            return False
+        col-=1
+        
+    col = dummyCol
+    row = dummyROw
 
-if __name__ == '__main__':
-    solution = Solution()
-    print(solution.solveNQueens(4))
+    while row<N and col>=0:
+        if matrix[row][col] == 1:
+            return False
+        row+=1
+        col-=1
+    return True
+def nNumberOfQueens(matrix, col, N):
+    global answer,visited
+   
+    if col == N:
+        return True
+    for i in range(N):
+        if isSafe(i, col, matrix, N) == True:     
+                            
+            matrix[i][col] = 1
+            if nNumberOfQueens(matrix, col+1, N)==True:
+                return True
+            matrix[i][col] = 0
+    
+matrix = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+]
+N = len(matrix)
+
+col = 0
+nNumberOfQueens(matrix, col, N)
+print(matrix)
+    
