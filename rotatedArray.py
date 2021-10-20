@@ -1,4 +1,4 @@
-def findingPiviot(nums):
+def findingPiviot(nums):#Cheaking for Next Hill
     if nums[0] > nums[len(nums)-1]:
         for i in range(len(nums)-1):
             if nums[i] > nums[i+1]:
@@ -8,9 +8,9 @@ def findingPiviot(nums):
 
 
 def findValueInRotatedArray(nums, valToFind):
-    piviot = findingPiviot(nums)
-    left = 0
-    right = len(nums)-1
+    piviot = findingPiviot(nums)#Create Fucntion for finding the Next Hill
+    left = 0#Lowest Element Index
+    right = len(nums)-1#High Element Index 
     if valToFind <= nums[piviot] and nums[left] <= valToFind:
         right = piviot
     else:
@@ -35,7 +35,7 @@ valToFind = 0
 print(findValueInRotatedArray(nums, valToFind))
 
 # Another Method
-
+#Another Approach of Same Problem
 
 def valueInRotatedArray(nums, target):
     left = 0
